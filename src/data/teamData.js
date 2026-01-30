@@ -19,6 +19,7 @@ import ajulImg from '../assets/images/ajul.jpg';
 import nidheeshImg from '../assets/images/nidheesh.jpg';
 import jishnuImg from '../assets/images/jishnu.jpg';
 import ronithImg from '../assets/images/ronith.jpg';
+import adhiImg from '../assets/images/adhi.jpg';
 // Placeholders
 import teamMainImg from '../assets/images/team-main.jpg';
 
@@ -217,6 +218,15 @@ export const teamData = [
     },
     {
         id: 21,
+        name: "Adhi",
+        role: "Knowledgeable Person",
+        image: adhiImg,
+        description: "A knowledgeable person adding value to the team.",
+        isHighlight: false,
+        instagram: "tm_wayzz"
+    },
+    {
+        id: 22,
         name: "Sreenadhu",
         role: "Member",
         image: sreenadhuImg,
@@ -225,7 +235,7 @@ export const teamData = [
         instagram: "sreenanduhh"
     },
     {
-        id: 22,
+        id: 23,
         name: "Sooraj",
         role: "Member",
         image: null,
