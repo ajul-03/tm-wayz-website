@@ -2,38 +2,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 5%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  padding: 1.25rem 8%;
+  background: rgba(8, 11, 17, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-smooth);
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #1a1a1a;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #2ecc71, #16a085);
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #10B981, #06B6D4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
 }
 
 .nav a {
-  margin-left: 2rem;
   text-decoration: none;
-  color: #555;
+  color: var(--text-silver);
+  font-size: 0.95rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  transition: var(--transition-smooth);
   position: relative;
+  padding: 0.5rem 0;
 }
 
 .nav a:hover {
-  color: #16a085;
+  color: var(--text-white);
 }
 
 .nav a::after {
@@ -41,10 +50,11 @@
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
-  background-color: #16a085;
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #10B981, #06B6D4);
+  transition: var(--transition-smooth);
+  border-radius: 2px;
 }
 
 .nav a:hover::after {
@@ -57,7 +67,10 @@
   }
 
   .nav {
-    display: none;
-    /* Mobile menu to be implemented if needed */
+    gap: 1.25rem;
+  }
+
+  .nav a {
+    font-size: 0.85rem;
   }
 }

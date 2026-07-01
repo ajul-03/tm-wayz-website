@@ -1,109 +1,190 @@
 .team {
-    background-color: var(--bg-light);
+    background-color: var(--bg-dark);
+    padding: 8rem 8% 6rem;
 }
 
-.section-subtitle {
+.section-header {
     text-align: center;
-    color: var(--text-light);
-    margin-top: 1rem;
+    margin-bottom: 4rem;
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
+.section-pretitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent-green);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+}
+
+.section-underline {
+    height: 4px;
+    width: 60px;
+    background: linear-gradient(90deg, #10B981, #06B6D4);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.team-container {
+    max-width: 1400px;
     margin: 0 auto;
 }
 
+/* Mobile-first horizontal scroll, snap alignment */
+.team-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+    padding: 1rem 0.5rem 3rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar default behaviors, show custom style on scroll */
+.team-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.team-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+.team-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+}
+
 .team-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 0 0 82vw;
+    max-width: 330px;
+    scroll-snap-align: center;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    border-radius: 24px;
 }
 
 .team-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    border-color: rgba(6, 182, 212, 0.2);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(6, 182, 212, 0.05);
 }
 
-/* Highlighted Card Styling (Presidents/Secretaries) */
+/* Highlighted Leadership Cards */
 .highlight-card {
-    grid-column: span 1;
-    /* Default to 1, but we can make it span 2 on larger screens if we have text heavy description */
-    border: 2px solid var(--primary);
-    background: linear-gradient(to bottom right, #ffffff, #f0fffa);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, rgba(255, 255, 255, 0.03) 100%);
 }
 
-@media (min-width: 900px) {
-    /* If highlighted, maybe center it? For now, standard grid looks okay. 
-     If we want them to stand out more, we can make them larger. */
+.highlight-card:hover {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(16, 185, 129, 0.12);
 }
 
+/* Image styling */
 .image-wrapper {
-    height: 350px;
+    height: 380px;
+    position: relative;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.01);
 }
 
 .image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    filter: grayscale(15%) brightness(85%);
+    transition: var(--transition-smooth);
 }
 
 .team-card:hover .image-wrapper img {
-    transform: scale(1.05);
+    filter: grayscale(0%) brightness(100%);
+    transform: scale(1.03);
 }
 
+.no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+}
+
+/* Leadership Badge */
+.card-badge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: linear-gradient(135deg, #10B981, #06B6D4);
+    color: #080B11;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    z-index: 5;
+}
+
+/* Card details styling */
 .card-content {
-    padding: 1.5rem;
+    padding: 1.75rem;
     text-align: center;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.badge {
-    display: inline-block;
-    background-color: var(--accent);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
+.card-content h3 {
+    font-size: 1.4rem;
+    color: var(--text-white);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.aesthetic-role {
     font-size: 0.8rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-    align-self: center;
-}
-
-.team-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--secondary);
+    letter-spacing: 0.15em;
+    background: linear-gradient(90deg, #10B981, #06B6D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .role {
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: -0.5rem;
 }
 
 .description {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-silver);
+    line-height: 1.6;
+    margin: 0.25rem 0 1rem;
 }
 
+/* Follow CTA inside card */
 .social-links {
     margin-top: auto;
-    border-top: 1px solid #eee;
-    padding-top: 1rem;
 }
 
 .card-insta-link {
@@ -112,26 +193,63 @@
     justify-content: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
+    color: var(--text-white);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.insta-icon-svg {
+    stroke: var(--text-silver);
+    transition: var(--transition-smooth);
 }
 
 .card-insta-link:hover {
-    color: #E1306C;
-    /* Instagram Color */
+    background: linear-gradient(135deg, #10B981, #06B6D4);
+    color: #080B11;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
 }
 
-.no-image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #2ecc71, #16a085);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
+.card-insta-link:hover .insta-icon-svg {
+    stroke: #080B11;
+}
+
+/* Desktop Grid and Overrides */
+@media (min-width: 768px) {
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        gap: 2rem;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        padding: 1rem 0;
+    }
+    
+    .team-card {
+        flex: none;
+        max-width: none;
+        scroll-snap-align: none;
+    }
+    
+    .team-card:hover {
+        transform: translateY(-12px);
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.3rem;
+    }
+    .team {
+        padding: 6rem 5% 4rem;
+    }
+    .team-card {
+        flex: 0 0 280px;
+    }
 }

@@ -1,26 +1,38 @@
-
 import React from 'react';
 import './About.css';
 
 const About = () => {
     return (
         <section className="about" id="about">
+            <div className="about-watermark">KIDANHI</div>
             <div className="about-container">
-                <div className="section-header">
-                    <h2>About Us</h2>
-                    <div className="underline"></div>
-                </div>
-
-                <div className="about-content">
-                    <p>
-                        We are a small team from a rural village called <strong>Kidanhi</strong>. We started as a group of friends, and our village is a beautiful place filled with many young people like us.
-                    </p>
-                    <p>
-                        Our team is divided into five groups, and everyone shares a strong bond of friendship and unity. Whenever any problem arises, we stand together and support each other.
-                    </p>
-                    <p className="highlight-text">
-                        In 2025, we went on our first trip together, which became a very special and memorable moment in our lives.
-                    </p>
+                <div className="about-grid">
+                    <div className="about-header-block">
+                        <span className="about-pretitle">Our Story</span>
+                        <h2 className="about-title">The Brotherhood</h2>
+                        <div className="about-underline"></div>
+                    </div>
+                    
+                    <div className="about-body-block">
+                        <p className="about-lead">
+                            We are more than just a team; we are a brotherhood born from the heart of a vibrant village in Kerala. Bound by unity, fueled by friendship, and driven by passion, TM_WAYz represents the spirit of togetherness, local culture, and ultimate vibes.
+                        </p>
+                        
+                        <div className="about-stats">
+                            <div className="stat-card glass-panel">
+                                <span className="stat-num">5</span>
+                                <span className="stat-label">Bands of Unity</span>
+                            </div>
+                            <div className="stat-card glass-panel">
+                                <span className="stat-num">2025</span>
+                                <span className="stat-label">First Milestone Trip</span>
+                            </div>
+                            <div className="stat-card glass-panel">
+                                <span className="stat-num">20+</span>
+                                <span className="stat-label">Active Brothers</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
