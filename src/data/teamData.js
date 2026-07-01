@@ -20,6 +20,7 @@ import nidheeshImg from '../assets/images/nidheesh.jpg';
 import jishnuImg from '../assets/images/jishnu.jpg';
 import ronithImg from '../assets/images/ronith.jpg';
 import adhiImg from '../assets/images/adhi.jpg';
+import albinImg from '../assets/images/albin.jpg';
 
 export const teamData = [
   {
@@ -229,7 +230,7 @@ export const teamData = [
     name: "Albin",
     role: "Army Officer",
     aestheticRole: "The Patriot",
-    image: null,
+    image: albinImg,
     description: "Serving the nation. Our proud Army Officer.",
     isHighlight: false,
     instagram: "alwhieee"
