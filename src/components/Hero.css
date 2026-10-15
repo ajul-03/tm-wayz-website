@@ -26,14 +26,15 @@
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.08s ease-out;
     transform: scale(1.03);
-    animation: zoomSlow 24s ease-in-out infinite alternate;
     pointer-events: none;
+    will-change: opacity;
 }
 
 .hero-background-slide.active {
     opacity: 1;
+    z-index: 1;
 }
 
 .overlay-gradient {

@@ -8,12 +8,18 @@ import IntroSequence from './components/IntroSequence';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [introFading, setIntroFading] = useState(false);
 
   return (
     <div className="App">
-      {showIntro && <IntroSequence onComplete={() => setShowIntro(false)} />}
+      {showIntro && (
+        <IntroSequence
+          onStartFadeOut={() => setIntroFading(true)}
+          onComplete={() => setShowIntro(false)}
+        />
+      )}
       <Header />
-      <Hero />
+      <Hero isIntroActive={showIntro && !introFading} />
       <About />
       <TeamList />
       <Footer />

@@ -25,16 +25,30 @@ const HERO_IMAGES = [
   '/images/herosection/WhatsApp Image 2026-09-15 at 11.08.14 PM.jpeg'
 ];
 
-const Hero = () => {
+// Flip-book stop-motion speed (every 0.28 seconds)
+const FLIP_INTERVAL_MS = 280;
+
+const Hero = ({ isIntroActive = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Preload all 20 images into the browser cache so flip-book loop runs with zero lag
   useEffect(() => {
+    HERO_IMAGES.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  // Rapid flip-book / stop-motion animation loop
+  useEffect(() => {
+    if (isIntroActive) return;
+
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % HERO_IMAGES.length);
-    }, 3500);
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, FLIP_INTERVAL_MS);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isIntroActive]);
 
   return (
     <section className="hero" id="home">
@@ -43,8 +57,9 @@ const Hero = () => {
           <img
             key={src}
             src={src}
-            alt={`TM_WAYz Hero Slide ${index + 1}`}
+            alt={`TM_WAYz Hero Frame ${index + 1}`}
             className={`hero-background-slide ${index === currentIndex ? 'active' : ''}`}
+            loading={index < 4 ? 'eager' : 'lazy'}
             onError={(e) => {
               e.target.src = fallbackImage;
             }}
@@ -52,6 +67,7 @@ const Hero = () => {
         ))}
         <div className="overlay-gradient"></div>
       </div>
+
       <div className="hero-content">
         <div className="badge-wrapper">
           <a
